@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="template">
+
+  </div>
+  <script src="/xuni/bundle.js"></script>
+  <script>
+    var templateStr =  `
+    <div>
+      <p>
+        今天天气{{weather.type}},温度为{{weather.temp}}
+      </p>
+      <ul>
+        {{#students}}
+        <li class="myli">学生{{name}}的爱好是
+        <ol>
+          {{#hobbies}}
+          <li>{{.}}</li>
+          {{/hobbies}}
+        </ol>
+        </li>
+        {{/students}}
+      </ul>
+    </div>
+    `;
+    var data = {
+      weather:{
+        type:"晴",
+        temp:'25°C'
+      },
+      students:[
+        {'name':'小明','hobbies':['游泳','健身']},
+        {'name':'小宏','hobbies':['唱歌']},
+        {'name':'小刚','hobbies':['游戏','编码','跳舞']}
+      ]
+    }
+    // var templateStr = `
+    //   我是{{name}},我爱{{world.name}},因为它非常{{world.cause}}
+    // `;
+    // var data = {
+    //   name:'SK',
+    //   world:{
+    //     name:'世界',
+    //     cause:'美丽'
+    //   }
+    // }
+    MyMustache.render(templateStr,data)
+    //var domStr =  console.log(domStr);
+    // var template = document.getElementById('template')
+    // template.innerHTML = domStr
+  </script>
+</body>
+</html>
